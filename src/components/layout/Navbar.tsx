@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
-import { useState, useEffect } from 'react'
+import { useState, useSyncExternalStore } from 'react'
 import { Camera, Menu, Sun, Moon, LogOut, LayoutDashboard } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -22,8 +22,9 @@ export default function Navbar() {
   const { data: session } = useSession()
   const { theme, toggleTheme } = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
+  // useSyncExternalStore: server snapshot returns false, client snapshot returns true
+  // This is the React-idiomatic way to detect post-hydration without setState-in-effect
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false)
 
   const user = session?.user
 

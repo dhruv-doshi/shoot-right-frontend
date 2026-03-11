@@ -9,7 +9,8 @@ import UploadModal from '@/components/upload/UploadModal'
 import { useUserImages } from '@/hooks/useUserImages'
 
 export default function ImageGallery() {
-  const { data: images, isLoading } = useUserImages()
+  const { data: rawImages, isLoading } = useUserImages()
+  const images = Array.isArray(rawImages) ? rawImages : []
   const [uploadOpen, setUploadOpen] = useState(false)
 
   return (
@@ -18,7 +19,7 @@ export default function ImageGallery() {
         <div>
           <h1 className="font-serif text-3xl text-[var(--foreground)] sm:text-4xl">My Photos</h1>
           <p className="mt-1 text-sm text-[var(--muted-foreground)]">
-            {images?.length ?? 0} image{images?.length !== 1 ? 's' : ''} analyzed
+            {images.length} image{images.length !== 1 ? 's' : ''} analyzed
           </p>
         </div>
         <Button
@@ -32,7 +33,7 @@ export default function ImageGallery() {
 
       {isLoading ? (
         <DashboardSkeleton />
-      ) : !images || images.length === 0 ? (
+      ) : images.length === 0 ? (
         /* Empty state */
         <div className="flex min-h-96 flex-col items-center justify-center rounded-xl border-2 border-dashed border-[var(--border)] text-center">
           <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--secondary)]">
