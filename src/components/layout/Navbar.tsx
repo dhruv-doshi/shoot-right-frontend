@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
 import { useState } from 'react'
-import { Camera, Menu, Sun, Moon, LogOut, LayoutDashboard, User } from 'lucide-react'
+import { Camera, Menu, Sun, Moon, LogOut, LayoutDashboard } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'

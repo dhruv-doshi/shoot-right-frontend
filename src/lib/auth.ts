@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth'
+import NextAuth, { CredentialsSignin } from 'next-auth'
 import Google from 'next-auth/providers/google'
 import Credentials from 'next-auth/providers/credentials'
 import apiClient from '@/lib/api-client'
@@ -27,7 +27,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             return { ...user, accessToken }
           }
           return null
-        } catch {
+        } catch (err) {
+          const error = err as { response?: { data?: { code?: string } } }
+          if (error?.response?.data?.code === 'EMAIL_NOT_VERIFIED') {
+            const e = new CredentialsSignin('Email not verified')
+            e.code = 'email_not_verified'
+            throw e
+          }
           return null
         }
       },

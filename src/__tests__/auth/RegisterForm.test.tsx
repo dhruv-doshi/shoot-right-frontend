@@ -64,7 +64,7 @@ describe('RegisterForm', () => {
     await user.click(screen.getByRole('button', { name: /create account/i }))
 
     await waitFor(() => {
-      expect(mockPush).toHaveBeenCalledWith('/login?registered=true')
+      expect(mockPush).toHaveBeenCalledWith('/verify-email')
     })
   })
 })

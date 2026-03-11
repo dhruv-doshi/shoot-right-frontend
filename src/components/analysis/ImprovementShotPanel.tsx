@@ -23,36 +23,38 @@ export default function ImprovementShotPanel({ analysis }: Props) {
 
       {shot ? (
         <div className="space-y-4">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="space-y-2">
-              <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">
-                Original
-              </p>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-black">
-                <Image
-                  src={analysis.imageUrl}
-                  alt="Original"
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
+          {shot.url && (
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="space-y-2">
+                <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">
+                  Original
+                </p>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-black">
+                  <Image
+                    src={analysis.imageUrl}
+                    alt="Original"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <p className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+                  Improved
+                </p>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-black">
+                  <Image
+                    src={shot.url}
+                    alt="Improved version"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                </div>
               </div>
             </div>
-            <div className="space-y-2">
-              <p className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
-                Improved
-              </p>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-black">
-                <Image
-                  src={shot.url}
-                  alt="Improved version"
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-          </div>
+          )}
           <div className="rounded-lg bg-[var(--secondary)] p-4 text-sm leading-relaxed text-[var(--muted-foreground)]">
             {shot.explanation}
           </div>

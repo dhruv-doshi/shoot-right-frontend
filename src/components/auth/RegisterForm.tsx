@@ -10,7 +10,6 @@ import { Eye, EyeOff, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import GoogleSignInButton from './GoogleSignInButton'
 import apiClient from '@/lib/api-client'
 import { ROUTES } from '@/constants/routes'
 
@@ -53,7 +52,7 @@ export default function RegisterForm() {
         email: data.email,
         password: data.password,
       })
-      router.push(`${ROUTES.LOGIN}?registered=true`)
+      router.push(ROUTES.VERIFY_EMAIL)
     } catch (err: unknown) {
       const error = err as { response?: { data?: { message?: string } } }
       setServerError(error?.response?.data?.message || 'Registration failed. Please try again.')
@@ -62,16 +61,6 @@ export default function RegisterForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      <GoogleSignInButton callbackUrl="/dashboard" />
-
-      <div className="relative flex items-center">
-        <div className="flex-grow border-t border-[var(--border)]" />
-        <span className="mx-4 flex-shrink text-xs text-[var(--muted-foreground)]">
-          or register with email
-        </span>
-        <div className="flex-grow border-t border-[var(--border)]" />
-      </div>
-
       {serverError && (
         <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400">
           {serverError}

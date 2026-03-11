@@ -24,7 +24,6 @@ function ScoreBadge({ score, status }: { score: number; status: UserImage['statu
   }
   if (status === 'failed') return <Badge variant="destructive">Failed</Badge>
 
-  const variant = score >= 80 ? 'default' : 'secondary'
   const textColor = score >= 80 ? 'text-green-600 dark:text-green-400' : score >= 60 ? 'text-amber-600' : 'text-red-500'
   return (
     <span className={cn('font-mono text-sm font-semibold', textColor)}>{score}</span>

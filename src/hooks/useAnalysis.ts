@@ -12,7 +12,9 @@ export function useAnalysis(analysisId: string) {
       return response.data.data
     },
     placeholderData: PLACEHOLDER_ANALYSIS,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 0,
+    refetchInterval: (query) =>
+      query.state.data?.status === 'processing' ? 3000 : false,
     enabled: !!analysisId,
   })
 }

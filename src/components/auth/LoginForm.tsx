@@ -11,7 +11,6 @@ import { Eye, EyeOff, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import GoogleSignInButton from './GoogleSignInButton'
 import { ROUTES } from '@/constants/routes'
 
 const loginSchema = z.object({
@@ -44,7 +43,11 @@ export default function LoginForm() {
       redirect: false,
     })
     if (result?.error) {
-      setAuthError('Invalid email or password. Please try again.')
+      if (result.code === 'email_not_verified') {
+        setAuthError('Please verify your email address before signing in. Check your inbox for the verification link.')
+      } else {
+        setAuthError('Invalid email or password. Please try again.')
+      }
     } else {
       router.push(callbackUrl)
       router.refresh()
@@ -53,16 +56,6 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-      <GoogleSignInButton callbackUrl={callbackUrl} />
-
-      <div className="relative flex items-center">
-        <div className="flex-grow border-t border-[var(--border)]" />
-        <span className="mx-4 flex-shrink text-xs text-[var(--muted-foreground)]">
-          or continue with email
-        </span>
-        <div className="flex-grow border-t border-[var(--border)]" />
-      </div>
-
       {authError && (
         <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400">
           {authError}

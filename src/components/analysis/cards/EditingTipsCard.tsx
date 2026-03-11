@@ -9,7 +9,7 @@ export default function EditingTipsCard({ tips }: Props) {
         Post-processing adjustments to bring out the full potential of this photo.
       </p>
       <ol className="space-y-3">
-        {tips.map((tip, i) => (
+        {(tips ?? []).map((tip, i) => (
           <li key={i} className="flex items-start gap-3">
             <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[var(--secondary)] font-mono text-xs font-semibold text-[var(--foreground)]">
               {i + 1}

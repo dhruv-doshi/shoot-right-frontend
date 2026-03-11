@@ -10,7 +10,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run lint && npm run test"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -56,6 +58,7 @@
     "eslint-config-next": "16.1.6",
     "jsdom": "^28.1.0",
     "msw": "^2.12.10",
+    "playwright": "^1.58.2",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4",

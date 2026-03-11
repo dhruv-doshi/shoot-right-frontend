@@ -3,7 +3,6 @@
 import { useCallback, useState } from 'react'
 import { useDropzone, FileRejection } from 'react-dropzone'
 import { Upload, X, Image as ImageIcon, AlertCircle } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 const ACCEPTED_TYPES = {

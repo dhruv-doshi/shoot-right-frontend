@@ -19,7 +19,7 @@ export default function ColorAestheticCard({
           Dominant Colors
         </h4>
         <div className="flex flex-wrap gap-2">
-          {dominantColors.map((swatch) => (
+          {(dominantColors ?? []).map((swatch) => (
             <div key={swatch.hex} className="flex items-center gap-2">
               <div
                 className="h-8 w-8 rounded-md border border-[var(--border)] shadow-sm"
@@ -39,7 +39,7 @@ export default function ColorAestheticCard({
 
       {/* Visual palette bar */}
       <div className="flex h-4 overflow-hidden rounded-full">
-        {dominantColors.map((swatch) => (
+        {(dominantColors ?? []).map((swatch) => (
           <div
             key={swatch.hex}
             style={{ backgroundColor: swatch.hex, width: `${swatch.percentage}%` }}
@@ -66,7 +66,7 @@ export default function ColorAestheticCard({
             Strengths
           </h4>
           <ul className="space-y-1.5">
-            {strengths.map((s, i) => (
+            {(strengths ?? []).map((s, i) => (
               <li key={i} className="flex items-start gap-2 text-sm">
                 <CheckCircle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-green-500" />
                 {s}
@@ -80,7 +80,7 @@ export default function ColorAestheticCard({
             Suggestions
           </h4>
           <ul className="space-y-1.5">
-            {weaknesses.map((w, i) => (
+            {(weaknesses ?? []).map((w, i) => (
               <li key={i} className="flex items-start gap-2 text-sm">
                 <AlertTriangle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-amber-500" />
                 {w}

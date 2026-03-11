@@ -17,6 +17,7 @@ export interface UploadImageResponse {
 }
 
 export interface PaginatedResponse<T> {
+  success: boolean
   data: T[]
   total: number
   page: number

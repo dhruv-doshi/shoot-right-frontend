@@ -3,7 +3,7 @@ import apiClient from '@/lib/api-client'
 import type { ApiResponse } from '@/types/api'
 
 interface ImprovementShotResult {
-  url: string
+  url: string | null
   explanation: string
   generatedAt: string
 }

@@ -4,10 +4,10 @@ export interface ImageMetadata {
   make?: string
   model?: string
   lens?: string
-  focalLength?: number
-  aperture?: number
+  focalLength?: string
+  aperture?: string
   shutterSpeed?: string
-  iso?: number
+  iso?: string
   exposureMode?: string
   whiteBalance?: string
   flash?: string
@@ -80,7 +80,7 @@ export interface FullAnalysis {
   clickingTips: string[]
   editingTips: string[]
   improvementShot?: {
-    url: string
+    url: string | null
     explanation: string
     generatedAt: string
   }

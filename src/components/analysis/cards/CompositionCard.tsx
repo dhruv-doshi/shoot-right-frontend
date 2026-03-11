@@ -18,7 +18,7 @@ export default function CompositionCard({ score, strengths, weaknesses, details 
             Strengths
           </h4>
           <ul className="space-y-1.5">
-            {strengths.map((s, i) => (
+            {(strengths ?? []).map((s, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-[var(--foreground)]">
                 <CheckCircle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-green-500" />
                 {s}
@@ -33,7 +33,7 @@ export default function CompositionCard({ score, strengths, weaknesses, details 
             Areas to Improve
           </h4>
           <ul className="space-y-1.5">
-            {weaknesses.map((w, i) => (
+            {(weaknesses ?? []).map((w, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-[var(--foreground)]">
                 <AlertTriangle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-amber-500" />
                 {w}

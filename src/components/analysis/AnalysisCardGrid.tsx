@@ -21,7 +21,7 @@ export default function AnalysisCardGrid({ analysis }: Props) {
         id="metadata"
         title="Metadata & Histogram"
         icon={<BarChart2 className="h-4 w-4" />}
-        preview={<span>{analysis.metadata.make} {analysis.metadata.model}</span>}
+        preview={<span>{analysis.metadata?.make} {analysis.metadata?.model}</span>}
       >
         <MetadataHistogramCard metadata={analysis.metadata} histogram={analysis.histogram} />
       </AnalysisCard>
@@ -30,7 +30,7 @@ export default function AnalysisCardGrid({ analysis }: Props) {
         id="composition"
         title="Composition Analysis"
         icon={<Layers className="h-4 w-4" />}
-        preview={<span>{analysis.composition.score}/100</span>}
+        preview={<span>{analysis.composition?.score}/100</span>}
       >
         <CompositionCard {...analysis.composition} />
       </AnalysisCard>
@@ -39,7 +39,7 @@ export default function AnalysisCardGrid({ analysis }: Props) {
         id="technical"
         title="Technical Analysis"
         icon={<Aperture className="h-4 w-4" />}
-        preview={<span>{analysis.technical.score}/100 · {analysis.technical.sharpness}</span>}
+        preview={<span>{analysis.technical?.score}/100 · {analysis.technical?.sharpness}</span>}
       >
         <TechnicalCard {...analysis.technical} />
       </AnalysisCard>
@@ -48,7 +48,7 @@ export default function AnalysisCardGrid({ analysis }: Props) {
         id="color"
         title="Color & Aesthetic Analysis"
         icon={<Palette className="h-4 w-4" />}
-        preview={<span>{analysis.colorAesthetic.mood}</span>}
+        preview={<span>{analysis.colorAesthetic?.mood}</span>}
       >
         <ColorAestheticCard {...analysis.colorAesthetic} />
       </AnalysisCard>
@@ -57,7 +57,7 @@ export default function AnalysisCardGrid({ analysis }: Props) {
         id="clicking-tips"
         title="Tips for Shooting"
         icon={<Camera className="h-4 w-4" />}
-        preview={<span>{analysis.clickingTips.length} tips</span>}
+        preview={<span>{analysis.clickingTips?.length ?? 0} tips</span>}
       >
         <ClickingTipsCard tips={analysis.clickingTips} />
       </AnalysisCard>
@@ -66,7 +66,7 @@ export default function AnalysisCardGrid({ analysis }: Props) {
         id="editing-tips"
         title="Tips for Editing"
         icon={<Wand2 className="h-4 w-4" />}
-        preview={<span>{analysis.editingTips.length} tips</span>}
+        preview={<span>{analysis.editingTips?.length ?? 0} tips</span>}
       >
         <EditingTipsCard tips={analysis.editingTips} />
       </AnalysisCard>
