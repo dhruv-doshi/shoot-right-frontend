@@ -7,7 +7,6 @@ import { useAnalysis } from '@/hooks/useAnalysis'
 import AnalysisHero from '@/components/analysis/AnalysisHero'
 import SummaryPanel from '@/components/analysis/SummaryPanel'
 import AnalysisCardGrid from '@/components/analysis/AnalysisCardGrid'
-import ImprovementShotPanel from '@/components/analysis/ImprovementShotPanel'
 import AnalysisSkeleton from '@/components/analysis/AnalysisSkeleton'
 import Navbar from '@/components/layout/Navbar'
 import { ROUTES } from '@/constants/routes'
@@ -63,7 +62,6 @@ export default function AnalysisPage({ params }: Props) {
                   summary={analysis.summaryText}
                 />
                 <AnalysisCardGrid analysis={analysis} />
-                <ImprovementShotPanel analysis={analysis} />
               </>
             )}
           </div>
