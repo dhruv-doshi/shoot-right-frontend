@@ -17,9 +17,9 @@ GOOGLE_CLIENT_ID=<same value as frontend GOOGLE_CLIENT_ID>
 ```
 SMTP_HOST=smtp.gmail.com          # or your provider's host
 SMTP_PORT=587
-SMTP_USER=you@gmail.com
+SMTP_USERNAME=you@gmail.com
 SMTP_PASSWORD=your-app-password   # Gmail: use an App Password, not your account password
-SMTP_FROM=Shoot Right <you@gmail.com>
+SMTP_FROM_NAME=Shoot Right
 ```
 > **Gmail tip:** Go to Google Account → Security → 2-Step Verification → App Passwords. Generate one for "Mail".
 
