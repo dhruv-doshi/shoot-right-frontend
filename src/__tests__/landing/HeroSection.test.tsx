@@ -26,13 +26,4 @@ describe('HeroSection', () => {
     render(<HeroSection />)
     expect(screen.getByText(/get started free/i)).toBeInTheDocument()
   })
-
-  it('calls onUploadClick when Try Without Account is clicked', async () => {
-    const { userEvent } = await import('@testing-library/user-event')
-    const onUploadClick = vi.fn()
-    render(<HeroSection onUploadClick={onUploadClick} />)
-    const tryBtn = screen.getByText(/try without account/i)
-    await userEvent.setup().click(tryBtn)
-    expect(onUploadClick).toHaveBeenCalled()
-  })
 })

@@ -75,14 +75,6 @@ export default function HeroSection({ onUploadClick }: HeroSectionProps) {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="px-8"
-                onClick={onUploadClick}
-              >
-                Try Without Account
-              </Button>
             </>
           )}
         </div>
