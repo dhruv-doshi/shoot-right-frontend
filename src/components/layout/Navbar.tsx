@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
-import { useState, useSyncExternalStore } from 'react'
+import { useState } from 'react'
 import { Camera, Menu, Sun, Moon, LogOut, LayoutDashboard } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -20,11 +20,8 @@ import {
 
 export default function Navbar() {
   const { data: session } = useSession()
-  const { theme, toggleTheme } = useTheme()
+  const { toggleTheme } = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
-  // useSyncExternalStore: server snapshot returns false, client snapshot returns true
-  // This is the React-idiomatic way to detect post-hydration without setState-in-effect
-  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false)
 
   const user = session?.user
 
@@ -50,7 +47,7 @@ export default function Navbar() {
             aria-label="Toggle theme"
             className="h-9 w-9"
           >
-            {mounted && (theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />)}
+            <Sun className="h-4 w-4 hidden dark:block" /><Moon className="h-4 w-4 block dark:hidden" />
           </Button>
 
           {user ? (
@@ -109,7 +106,7 @@ export default function Navbar() {
         {/* Mobile nav */}
         <div className="flex items-center gap-2 md:hidden">
           <Button variant="ghost" size="icon" onClick={toggleTheme} className="h-9 w-9">
-            {mounted && (theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />)}
+            <Sun className="h-4 w-4 hidden dark:block" /><Moon className="h-4 w-4 block dark:hidden" />
           </Button>
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>

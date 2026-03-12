@@ -18,9 +18,11 @@ export default function ImageGallery() {
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="font-serif text-3xl text-[var(--foreground)] sm:text-4xl">My Photos</h1>
-          <p className="mt-1 text-sm text-[var(--muted-foreground)]">
-            {images.length} image{images.length !== 1 ? 's' : ''} analyzed
-          </p>
+          {!isLoading && (
+            <p className="mt-1 text-sm text-[var(--muted-foreground)]">
+              {images.length} image{images.length !== 1 ? 's' : ''} analyzed
+            </p>
+          )}
         </div>
         <Button
           className="bg-[var(--accent)] text-white hover:bg-[var(--accent)]/90"

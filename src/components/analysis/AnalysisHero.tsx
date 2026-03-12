@@ -47,6 +47,7 @@ export default function AnalysisHero({ imageUrl, filename }: AnalysisHeroProps) 
             className="object-contain"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
             priority
+            unoptimized
             onLoad={(e) =>
               setImgSize({ w: e.currentTarget.naturalWidth, h: e.currentTarget.naturalHeight })
             }
