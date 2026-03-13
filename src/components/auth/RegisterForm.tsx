@@ -52,7 +52,7 @@ export default function RegisterForm() {
         email: data.email,
         password: data.password,
       })
-      router.push(ROUTES.VERIFY_EMAIL)
+      router.push(ROUTES.LOGIN)
     } catch (err: unknown) {
       const error = err as { response?: { data?: { message?: string } } }
       setServerError(error?.response?.data?.message || 'Registration failed. Please try again.')
