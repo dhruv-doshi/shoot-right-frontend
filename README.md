@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shoot Right
 
-## Getting Started
+> AI photography coach. Upload a shot — get instant, visual feedback on composition, lighting, and color.
 
-First, run the development server:
+🌐 **Live**: [shoot-right.vercel.app](https://shoot-right.vercel.app)
+📁 **Backend**: [unified-backend](https://github.com/dhruv-doshi/unified-backend)
+👤 **Author**: [Dhruv Doshi](https://dhruvdoshi.vercel.app)
+
+---
+
+## What it does
+
+Upload a photo and Shoot Right analyses it across three axes:
+
+- **Composition** — rule of thirds, golden ratio, leading lines, symmetry — drawn directly over your image
+- **Lighting** — exposure scoring, histogram analysis, dynamic range hints
+- **Color** — palette extraction, white balance check, harmony score
+
+Every score is paired with a **suggested improvement shot** so you know exactly what to do differently next time.
+
+## Tech stack
+
+| Layer | Choice |
+| --- | --- |
+| Framework | Next.js 14 (App Router) |
+| Language | TypeScript (strict) |
+| UI | Tailwind CSS · shadcn/ui · Radix primitives |
+| State / Data | TanStack Query · Axios |
+| Auth | NextAuth v5 |
+| Forms | React Hook Form + Zod |
+| Testing | Vitest + Testing Library |
+| Backend | FastAPI + MediaPipe + OpenCV ([unified-backend](https://github.com/dhruv-doshi/unified-backend)) |
+
+## Getting started
 
 ```bash
+# Install
+npm install
+
+# Configure env
+cp .env.example .env.local   # fill in API base URL, NextAuth secrets
+
+# Dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Required env vars
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_API_BASE_URL` | URL of the unified-backend FastAPI service |
+| `NEXTAUTH_SECRET` | NextAuth session signing |
+| `NEXTAUTH_URL` | Public origin |
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run start` | Serve production build |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript check |
+| `npm test` | Vitest unit tests |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/             # App Router pages and route handlers
+├── components/      # UI components (composition overlays, score cards, histogram)
+├── lib/             # API client, auth config, utility functions
+├── hooks/           # Custom React hooks (useImageAnalysis, etc.)
+└── types/           # Shared TypeScript types
+```
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Deployed on Vercel — connect the GitHub repo and add the env vars above. The `unified-backend` service must be reachable from the Vercel runtime.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+MIT — free to use, fork, and learn from.
